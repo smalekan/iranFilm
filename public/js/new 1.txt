@@ -1,0 +1,5 @@
+https://api.myjson.com/bins/11dv4v
+
+
+
+{"languages":[{"name":"persian","value":1},{"name":"arabic","value":2},{"name":"english","value":3},{"name":"spanish","value":4}],"release":[{"name":"release3.0","value":1},{"name":"release2.0","value":2},{"name":"release1.0","value":3}],"resolution":[{"name":"1080","value":1,"size":"1000M"},{"name":"720","value":2,"size":"8000M"},{"name":"360","value":3,"size":"4000M"}],"type":[{"name":"1","value":1},{"name":"2","value":2}],"subtitle":null}
