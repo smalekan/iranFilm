@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+    <!-- Original Bootstrap 3.x -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/movie.css">
+    <link rel="stylesheet" href="css/download_tile.css">
+    <!-- <script type="text/javascript" src="mustache.js"></script> -->
+
+    <!-- <script src="owlcarousel/owl.carousel.min.js"></script> -->
+    <script type="must-template"  id="movie-nav-header">
+        <div class="row" id="edd">
+            <a> خانه </a>
+            <a> > </a>
+            <a href="main.html"> کاربران</a>
+        </div>
+    </script>
+    <script type="must-template" id="subtitle-null">
+        <div class="container text-align-center" >
+            <div style="margin-top:20px" class="row">
+                زیر نویسی برای این فیلم بارگذاری نشده است.
+            </div>
+            <hr>
+        </div>
+    </script>
+</head>
+<body>
+<div class="container-fluid" id="nav-container" >
+    <div class="row">
+        <div class="search-logo-container margin-top-bottom-20">
+            <div class="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2 text-align-right" >
+
+                        <a href="#"><img class="search_img" src="images/pic.png"></a>&nbsp
+				<a id="bell" href="#"><i class="fa fa-bell-o"></i></a>
+            </div>
+
+            <div class="col-md-4 col-md-offset-6 col-sm-3 col-sm-offset-0 input-group margin-top-10" >
+                <input id="email" type="text" class="form-control" name="email"  placeholder="جستجوی فیلم، سریال، بازیگر، کارگردان و ...">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <nav class="navbar navbar-default navbar-static-top margin-bottom-zero"  role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">آخرین ها
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">فیلم ها
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">سریال</a></li>
+                        <li><a href="#">انیمیشن</a></li>
+                        <li><a href="#">مستند</a></li>
+                        <li><a href="#">مجموعه ها</a></li>
+                        <li><a href="#">انیمه</a></li>
+                        <li><a href="#">دوبله</a></li>
+                        <li><a href="#"> زیک زاک</a></li>
+                        <li><a href="#"> باکس آفیس</a></li>
+                        <li><a href="#"> آنونس</a></li>
+                        <li><a href="#">برترین ها</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="container-fluid" id="movie-nav-target" >
+
+</div>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div id="linein" class="container download-menu" >
+            <ul class="list-inline">
+                <li id="download" class="margin-left-right-40"><a href="#"> تنظیمات </a></li>
+                <li id="subtitle" class="margin-left-right-40"><a href="#">خریداشتراک</a></li>
+                <li class="margin-left-right-40"><a href="#">سبددانلود</a></li>
+                <li class="margin-left-right-40"><a href="#">فیلم های موردعلاقه</a></li>
+                <li class="margin-left-right-40"><a href="#">تیکت</a></li>
+            </ul>
+            <hr>
+        </div>
+    </div>
+    <div id="download-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-1">
+
+						<div>
+							<div>
+								<div class="innerna">ویرایش اطلاعات کاربری</div>
+								<div class="innerna">تغییر رمز عبور</div>
+								<div class="innerna">انتقال اشتراک از سایت قدیم</div>
+								<div class="innerna">دعوت دوستان</div>
+							</div>
+						</div>
+
+				</div>
+
+				<div class="col-md-7 col-md-offset-1">
+					<div id="vtype1">شماره همراه</div>
+					<hr class="uptype1">
+					<div>
+						<div class="don"><input id="phone_number" name="phone_number" placeholder=<%=phone_number%> class="filling"></div>
+						<div class="don"><button id="save_phone_number" class="mobint">ذخیره شماره تماس</button></div>
+					</div>
+				</div>
+
+
+            </div>
+
+        </div>
+		<br><br><br><br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-1">
+				</div>
+			    <!-- <form method="post" action="/user"> -->
+                    <div class="col-md-7 col-md-offset-1">
+                        <div id="vtype2">ویرایش اطلاعات کاربری</div>
+                        <hr class="uptype1">
+                        <div class="down">
+                            <div class="don">نام</div>
+                            <div class="don"><input name="first_name" class="filling" placeholder=<%=first_name%>> </div>
+                        </div>
+
+                        <div class="down">
+                            <div class="don">نام خانوادگی</div>
+                            <div class="don"><input name="last_name" class="filling" placeholder=<%=last_name%>></div>
+                        </div>
+                        <div class="down">
+                            <div class="don">نام مستعار</div>
+                            <div class="don"><input name="nick_name" class="filling" placeholder=<%=nick_name%>></div>
+                        </div>
+                        <div class="down">
+                            <div class="don">ایمیل(نام کاربری)</div>
+                            <div class="don"><input name="email" class="filling" placeholder=<%=email%>></div>
+                        </div>
+                        <div class="don"><button id="update_info"  class="mobint">بروزرسانی</button><br><br></div>
+
+                    </div>
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="navbar navbar-default navbar-bottom" id="fyfyu">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col col-md-offset-2" >
+                <ul class="nav navbar-nav">
+                    <li><a href="#"> درخواست فیلم</a></li>
+                    <li><a href="#"> اشتراک ویژه</a></li>
+                    <li><a href="#">  باکس آفیس</a></li>
+                    <li><a href="#">نرم افزارهای مورد نیاز </a></li>
+                    <li><a href="#">پرسش های متداول </a></li>
+                    <li><a href="#">درباره ما </a></li>
+                    <li><a href="#">تماس با ما </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" id="fgfg">
+            <div class="col-md-4 col-md-offset-1">
+                <div class="context">
+                    محتوای این سایت مطابق با فرهنگ
+                    <br>
+                    خانواده های ایرانی می باشد
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div id="yuy">
+                    مجموعه دیتابیس فیلم امیرکبیر، با هدف ایجاد یک تجربه مشترک آموزشی و تفریحی برای دانشجویان دانشگاه صنعتی امیرکبیر ایجاد شده و هیچگونه استفاده تجاری ندارد. در صورتی که از این سایت و امکانات آن لذت می برید آن را به دوستان خود هم معرفی کنید.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2" id="ghgu">
+                <a href="#" class="fa fa-google-plus socials"></a>
+                <a href="#" class="fa fa-instagram socials"></a>
+                <a href="#" class="fa fa-telegram socials"></a>
+                <a href="#" class="fa fa-twitter socials"></a>
+            </div>
+        </div>
+        <div class="row" id="tyty">
+            <hr id="rtrt">
+            <div id="tuo">
+                تمامی حقوق این وب سایت متعلق به دیتابیس فیلم امیرکبیر می باشد
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="js/profile.js">
+</script>
+</html>

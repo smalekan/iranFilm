@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+    <!-- Original Bootstrap 3.x -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/movie.css">
+    <link rel="stylesheet" href="css/download_tile.css">
+    <script type="text/javascript" src="mustache.js"></script>
+
+    <script src="owlcarousel/owl.carousel.min.js"></script>
+    <script type="must-template"  id="movie-nav-header">
+        <div class="row" id="edd">
+            <a> خانه </a>
+            <a> > </a>
+            <a href="main.html"> فیلم ها </a>
+            <a> > </a>
+            <a> دانلود فیلم {{title}} </a>
+        </div>
+    </script>
+    <script type="must-template"  id="movie-tags">
+        <div class="row" id="jiu">
+            <a> دانلود فیلم {{title}} </a>
+        </div>
+        <div class="row" id="poerh" >
+            {{#tags}}
+            <a class="btn btn-default"> {{.}} </a>
+            {{/tags}}
+        </div>
+    </script>
+    <script type="must-template"  id="movie-info">
+        <div class=yuuu>سال ساخت : {{year}}</div>
+        <div class="yuuu">&nbsp</div>
+        <div class="yuuu">طول فیلم : ۱۲۰ دقیقه </div>
+        <div class="yuuu">&nbsp</div>
+        <div class="yuuu">زبان : {{language}}</div>
+        <div class="yuuu">&nbsp</div>
+        <div class="yuuu">محصول کشور : {{country}}</div>
+    </script>
+    <script type="must-template"  id="movie-summary">
+        <hr>
+        <div id="fsum">{{description}}</div>
+        <hr>
+    </script>
+    <script type="must-template"  id="movie-creator">
+        <div>کارگردان : {{director}}</div>
+        <div>نویسنده : {{Writer}}</div>
+        <div>ستارگان : {{Actors}}</div>
+        <div>دسته : {{Genre}}</div>
+    </script>
+    <script type="must-template"  id="movie-poster">
+        <img id="tgy" src="/posters/{{poster_url}}">
+    </script>
+    <script type="must-template"  id="movie-rating">
+        <a class="btn btn-default"> {{rate}} از 10 </a>
+        <a class="btn btn-warning"> IMDB </a>
+        <a class="btn btn-primary"> Subscene </a>
+    </script>
+    <script type="must-template" id="movie-versions">
+
+        <select class="custom-select width-1500" >
+            <option selected>همه زبان ها</option>
+            <option value="{{language}}">{{name}}</option>
+        </select>
+        <select class="custom-select width-1500">
+            <option selected> ریلیز </option>
+            <option value="{{year}}">{{name}}</option>
+        </select>
+        <select id="resolution-select" class="custom-select width-1500">
+            <option selected>رزولوشن</option>
+            {{#resolution}}
+            <option value="{{value}}">{{name}}</option>
+            {{/resolution}}
+        </select>
+        <select class="custom-select width-1500">
+            <option selected>نوع</option>
+            {{#type}}
+            <option value="{{value}}">{{name}}</option>
+            {{/type}}
+        </select>
+    </script>
+    <script type="must-template" id="file-size">
+        {{size}}
+    </script>
+    <script type="must-template" id="subtitle-null">
+        <div class="container text-align-center" >
+            <div id="subnoo" class="row">
+                زیر نویسی برای این فیلم بارگذاری نشده است.
+            </div>
+            <hr>
+        </div>
+    </script>
+    <script type="must-template" id="comment-template">
+    {{#comments}}
+            <div class="drdr" >
+              <div class="row">
+                  <div class="col-sm-3 text-align-right ftfto">
+                      <div class="opop">
+                          <div class="ctoberight">کارگردانی <span class="spsix">  &nbsp &nbsp {{rate}} از 10 &nbsp</span> </div>
+                          <div class="ctoberight" class="slidecontainer">
+                              <input type="range" min="1" max="10" value="6" class="slider" id="myRange">
+                          </div>
+                      </div>
+                      <br><br>
+                      <div class="opop">
+                          <div class="ctoberight">بازیگری  <span class="spsix">  &nbsp &nbsp &nbsp &nbsp {{rate}} از 10 &nbsp</span> </div>
+                          <div class="ctoberight" class="slidecontainer">
+                              <input type="range" min="1" max="10" value="4" class="slider" id="myRange">
+                          </div>
+                      </div>
+                      <br><br>
+                      <div class="opop">
+                          <div class="ctoberight">فیلمنامه  <span class="spsix">  &nbsp &nbsp &nbsp &nbsp {{rate}} از 10 &nbsp</span> </div>
+                          <div class="ctoberight" class="slidecontainer">
+                              <input type="range" min="1" max="10" value="2" class="slider" id="myRange">
+                          </div>
+                      </div>
+
+                  </div>
+                  <div class="col-sm-1 text-align-center">
+                      <img class="prrp" src="images/pic.png">
+                  </div>
+
+                  <div class="col-sm-4 text-align-center mmcomm">
+                      <br><div id="date-field-target" class="tobedate">date!!!!!!!</div>
+                      <div id="suggest-field-target" class="tobeleft">suggestion!!!!!</div>
+                      <br><br>
+                      <div id="index-field-target" class="ctoberight">{{comment}}</div>
+                      <br><br>
+                      <div id="like-field-target" class="clikef">31</div><a href="#"><i class="ithumbb fa fa-thumbs-up"></i></a>
+                      <div id="dislike-field-target" class="cdislikef">1</div><a href="#"><i class="ithumbd fa fa-thumbs-down"></i></a>
+                  </div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+    {{/comments}}
+    </script>
+</head>
+<body>
+<div class="container-fluid" id="nav-container" >
+    <div class="row">
+        <div class="search-logo-container margin-top-bottom-20">
+            <div class="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2 text-align-right" >
+
+                        <a href="#"><img class="search_img" src="images/pic.png"></a>&nbsp
+				<a id="bell" href="#"><i class="fa fa-bell-o"></i></a>
+            </div>
+
+            <div class="col-md-4 col-md-offset-6 col-sm-3 col-sm-offset-0 input-group margin-top-10" >
+                <input id="email" type="text" class="form-control" name="email"  placeholder="جستجوی فیلم، سریال، بازیگر، کارگردان و ...">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <nav class="navbar navbar-default navbar-static-top margin-bottom-zero"  role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">آخرین ها
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">فیلم ها
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">سریال</a></li>
+                        <li><a href="#">انیمیشن</a></li>
+                        <li><a href="#">مستند</a></li>
+                        <li><a href="#">مجموعه ها</a></li>
+                        <li><a href="#">انیمه</a></li>
+                        <li><a href="#">دوبله</a></li>
+                        <li><a href="#"> زیک زاک</a></li>
+                        <li><a href="#"> باکس آفیس</a></li>
+                        <li><a href="#"> آنونس</a></li>
+                        <li><a href="#">برترین ها</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="container-fluid" id="movie-nav-target" >
+
+</div>
+<div class="back-ground-image">
+    <div class="container-fluid" id="movie-tags-target" >
+
+    </div>
+    <div class="container-fluid" id="padding-right-65-px">
+    <div class="row">
+        <div class="col-md-3" id="movie-poster-target">
+        </div>
+        <div class="col-md-6">
+            <div class="row" id="movie-rating-target">
+            </div>
+
+                <div class="row" id="movie-info-target">
+
+                </div>
+                <div class="row" id="movie-summary-target">
+
+            </div>
+            <div class="row" id="movie-creator-target">
+
+
+            </div>
+        </div>
+        <div class="col-md-3" id="huhu">
+            <a> <i class="glyphicon glyphicon-play-circle"></i></a>
+
+        </div>
+
+    </div>
+</div>
+</div>
+<div class="container-fluid">
+
+    <div class="row">
+        <div id="linein" class="container download-menu" >
+            <ul class="list-inline">
+                <li id="download" class="margin-left-right-40"  style="cursor:pointer"> دانلود </li>
+                <li id="subtitle" class="margin-left-right-40">زیرنویس</li>
+                <li id="comment" class="margin-left-right-40" style="cursor:pointer">نظرکاربران</li>
+                <li class="margin-left-right-40"> نقد و بررسی</li>
+                <li class="margin-left-right-40">عوامل فیلم</li>
+                <li class="margin-left-right-40">جوایز</li>
+                <li class="margin-left-right-40"> گالری </li>
+
+            </ul>
+            <hr>
+        </div>
+    </div>
+    <div id="download-container">
+      <div id="comment-container" class="container" style="display:none">
+              <div id="movie-comment-container">
+                <div class="container">
+                    <div id="cstaticw">
+                      <div class="row">
+                        <div class="col-sm-3 text-align-right" id="shyh">
+                          <div id="ghgoo">
+                          <div class="ctoberight">کارگردانی <span class="spsix">  &nbsp &nbsp 6 از 10 &nbsp</span> </div>
+                          <div class="ctoberight" class="slidecontainer">
+                            <input type="range" min="1" max="10" value="6" class="slider" id="myRange">
+                          </div>
+                          </div>
+                          <br><br>
+                          <div class="opop">
+                          <div class="ctoberight">بازیگری  <span class="spsix">  &nbsp &nbsp &nbsp &nbsp 4 از 10 &nbsp</span> </div>
+                          <div class="ctoberight" class="slidecontainer">
+                            <input type="range" min="1" max="10" value="4" class="slider" id="myRange">
+                          </div>
+                          </div>
+                          <br><br>
+                          <div class="opop">
+                          <div class="ctoberight">فیلمنامه  <span class="spsix">  &nbsp &nbsp &nbsp &nbsp 2 از 10 &nbsp</span> </div>
+                          <div class="ctoberight" class="slidecontainer">
+                            <input type="range" min="1" max="10" value="2" class="slider" id="myRange">
+                          </div>
+                          </div>
+
+                        </div>
+                        <div class="col-sm-1 text-align-center" >
+                          <img class="prrp" src="images/pic.png">
+                        </div>
+
+
+                        <div class="col-sm-7 text-align-center" >
+                            <div class="form-group">
+                                <textarea id="txtuy" rows="5" name="comment" class="form-control"></textarea>
+                            </div>
+                            <div id="ytyty">
+                            <label class="sqradio"><input type="radio" name="radio" checked="checked"> نظری ندارم</label>
+                            <label class="sqradio"><input type="radio" name="radio"> پیشنهاد نمیکنم</label>
+                            <label class="sqradio"><input type="radio" name="radio"> پیشنهاد میکنم</label>
+                            </div>
+                            <br>
+                            <button id="entersu">ثبت دیدگاه</button
+                        </div>
+                              </div>
+                      </div>
+                    </div>
+              </div>
+              <br>
+              <br>
+              <br>
+              <div class="container">
+              <div class="row">
+                  <div class="col-sm-4 text-align-right" >
+                      <span class="green-color">
+                      ارزش دانلود 8 از 10
+                      </span>
+                      <hr class="border-top-5px">
+                      <span class="info-color">
+      نتایج آرا کاربران براساس کارگردانی+بازیگری+فیلمنامه
+                      </span>
+                  </div>
+                  <div class="col-sm-4 text-align-center" >
+                      <span class="blue-color">
+                     35 نفر از 48 نفر تماشای این انیمیشن را پیشنهاد کردند
+                      </span>
+
+                  </div>
+                  <div class="col-sm-4 text-align-center" >
+                      <span class="vote">
+                      شما هم براساس ارزش دانلود به فیلم رای دهید.
+                      </span>
+                      <button  class="btn btn-primary margin-top-20">امتیاز دهید</button>
+                  </div>
+
+              </div>
+            </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <div class="container">
+              <div id="comments-target">
+              </div>
+
+              </div>
+        </div>
+      </div>
+
+        <div id="other-container">
+              <div class="container" >
+
+                  <div class="row">
+                      <div class="col-sm-8" id="movie-versions-target">
+
+
+                      </div>
+                      <div id="helpuu" class="col-sm-4 text-align-center margin-bottom-20">
+                          <a href="#"><img id="gantimg" src="images/gant.png"></a>
+                          <span id="fdr" class="font-size-2-em"> راهنما ؟</span>
+                      </div>
+                      <div id="gyg" class="row">
+                          <div class="col-sm-1 col-sm-offset-9 radio-inline ">
+                              <input type="radio" name="type" value="male" checked> حرفه ای
+                          </div>
+
+                          <div class="col-sm-1 radio-inline">
+                              <input type="radio" name="type" value="female">پیشنهادی<br>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="container">
+              <div class="row">
+                  <div class="row">
+                      <div class="col-sm-2">
+
+                          <div id="vtype">فایلهای ویدئویی</div>
+                      </div>
+                      <hr class="uptype">
+                  </div>
+
+                      <table>
+      			  <tr>
+      				<td class="size">1.9GB</td>
+      				<td class="lang">ف</td>
+      				<td class="buy"><img class="imgflag" src="images/bask.png"></td>
+      				<td class="flagg"><img class="imgflag" src="images/flag.png"></td>
+      				<td class="ganoolg">Ganool</td>
+      				<td class="mainlangg">زبان اصلی</td>
+      				<td class="speedg">x264</td>
+      				<td class="icolorg">1080p <span id="ss">BluRay</span></td>
+
+      			  </tr>
+      			</table>
+                  </br>
+      			</br>
+              </div>
+          </div>
+
+  </div>
+    <div id="subtitle-container">
+
+
+    </div>
+
+</div>
+
+<div class="navbar navbar-default navbar-bottom" id="fyfyu">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col col-md-offset-2" >
+                <ul class="nav navbar-nav">
+                    <li><a href="#"> درخواست فیلم</a></li>
+                    <li><a href="#"> اشتراک ویژه</a></li>
+                    <li><a href="#">  باکس آفیس</a></li>
+                    <li><a href="#">نرم افزارهای مورد نیاز </a></li>
+                    <li><a href="#">پرسش های متداول </a></li>
+                    <li><a href="#">درباره ما </a></li>
+                    <li><a href="#">تماس با ما </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" id="fgfg">
+            <div class="col-md-4 col-md-offset-1">
+                <div class="context">
+                    محتوای این سایت مطابق با فرهنگ
+                    <br>
+                    خانواده های ایرانی می باشد
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div id="yuy">
+                    مجموعه دیتابیس فیلم امیرکبیر، با هدف ایجاد یک تجربه مشترک آموزشی و تفریحی برای دانشجویان دانشگاه صنعتی امیرکبیر ایجاد شده و هیچگونه استفاده تجاری ندارد. در صورتی که از این سایت و امکانات آن لذت می برید آن را به دوستان خود هم معرفی کنید.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2" id="ghgu">
+                <a href="#" class="fa fa-google-plus socials"></a>
+                <a href="#" class="fa fa-instagram socials"></a>
+                <a href="#" class="fa fa-telegram socials"></a>
+                <a href="#" class="fa fa-twitter socials"></a>
+            </div>
+        </div>
+        <div class="row" id="tyty">
+            <hr id="rtrt">
+            <div id="tuo">
+                تمامی حقوق این وب سایت متعلق به دیتابیس فیلم امیرکبیر می باشد
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="js/movie.js">
+</script>
+</html>

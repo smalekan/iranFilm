@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+    <!-- Original Bootstrap 3.x -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script type="text/javascript" src="mustache.js"></script>
+    <script src="owlcarousel/owl.carousel.min.js"></script>
+    <script type="must-templates" id="new-movie-template">
+        {{#movies}}
+            <span class="imdb-movie full-width-height" movie_id="{{id}}" >
+                <img class="full-width-height image" src="/posters/{{poster_url}}">
+
+                <div class="middle list-inline"  >
+                    <span>{{title}}</span>
+                    <br>
+                    <span class="release-date">{{year}}</span>
+                    <br>
+                    <li class="list-inline"><i class="glyphicon glyphicon-download"></i></li>
+                    <li class="list-inline"><i class="glyphicon glyphicon-heart"></i></li>
+
+                </div>
+            </span>
+        {{/movies}}
+    </script>
+    <script type="must-templates" id="hot-movie-template">
+        {{#movies}}
+        <div id="rooosh">
+        <span class="imdb-movie full-width-height" movie_id="{{id}}" >
+
+                <span id="fdj" class="bg-color-whitsmoke">
+                    <img id="heightfix" class="half-width-height image" src="{{poster.large}}">
+                    {{#genre}}
+                        <button class="butgenre">{{.}}</button>
+                    {{/genre}}
+                    <br>
+                    <br><br>
+                        <button id="bluray">BluRay</button>
+                        <button id="rate1">{{rating}}<i id="ratei" class="fa fa-star"></i></button>
+                </span>
+                <div class="middle list-inline"  >
+                    <span>{{title}}</span>
+                    <br>
+                    <span class="release-date">{{release_date}}</span>
+                    <br>
+                    <li class="list-inline"><i class="glyphicon glyphicon-download"></i></li>
+                    <li class="list-inline"><i class="glyphicon glyphicon-heart"></i></li>
+                </div>
+        </span>
+    </div>
+        {{/movies}}
+    </script>
+
+</head>
+<body>
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="search-logo-container margin-top-bottom-20">
+                <div class="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-2 text-align-right" >
+                  <% if (isAuth) { %>
+                    <span class="img-fluid"><a href="/profile"><img class="search_img max-height-35"  src="images/reg1.png"></a></span>
+                  <% } else { %>
+                      <a class="sign-register-span" data-toggle="modal" data-target="#myModal">ورود/عضویت</a>
+                  <%} %>
+
+                    <span class="img-fluid"><a href=""><img class="search_img max-height-35"  src="images/go.png"></a></span>
+                </div>
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="col-md-11">
+
+                        <div class="modal-content">
+                            <div class="modal-header bg-color-whitsmoke border-radius-10">
+                                <button type="button" class="close float-right" data-dismiss="modal" >&times;</button>
+                            </div>
+                            <div class="modal-body modal-container" >
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6"  id="login-container" >
+                                                <span><i class="fa fa-sign-in fa-2x margin-top-5"></i> ورود</span>
+                                            </div>
+                                            <div class="col-md-6"  id="register-container">
+                                                <span><i class="fa fa-user fa-2x margin-top-5" ></i> عضویت  </span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 modal-google" >
+                                                <button  id="entergoogle" type="submit"> ورود با حساب کاربری گوگل <div class="fa fa-google"></div>+</button>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 modal-google" >
+
+
+											   <div id="divline">
+													<div id="line1"></div>
+														<div id="circle">یا</div>
+													<div id="line2"></div>
+												</div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                          <form onsubmit="return validatePassword()" class="form-horizontal" id="register" name="signin" method="post" action="signup">
+                                                <div class="form-group">
+												<div class="col-sm-1"></div>
+                                                    <label for="inputEmail3" class="col-sm-3 col-sm-offset-1 control-label labels">ایمیل<sup><i class="fa fa-asterisk"></i></sup></label>
+                                                    <div class="col-sm-6">
+                                                        <input name="email" class="form-control filling" placeholder="ایمیل">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+												<div class="col-sm-1"></div>
+                                                    <label for="inputEmail3" class="col-sm-3 col-sm-offset-1 control-label labels">رمز عبور<sup><i class="fa fa-asterisk"></i></sup></label>
+                                                    <div class="col-sm-6">
+                                                        <input name="password" type="password" class="form-control filling" placeholder="رمز عبور">
+                                                    </div>
+                                                </div>
+
+												<div class="form-group">
+												<div class="col-sm-1"></div>
+                                                    <label for="inputEmail3" class="col-sm-3 col-sm-offset-1 control-label labels">تکرار رمز عبور<sup><i class="fa fa-asterisk"></i></sup></label>
+                                                    <div class="col-sm-6">
+                                                        <input name="re_password" type="password" class="form-control filling" placeholder="تکرار رمز عبور">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+												<div class="col-sm-1"></div>
+                                                    <label for="inputEmail3" class="col-sm-3 col-sm-offset-1 control-label labels">کد امنیتی<sup><i class="fa fa-asterisk"></i></sup></label>
+														<div class="col-sm-3">
+                                                        <input type="email" class="form-control filling" placeholder="کد امنیتی">
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <i class="fa fa-refresh fa-2x margin-top-5" ></i>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img src="images/capt.png" class="max-height-30" >
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-7 text-align-left" >
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> قوانین را مطالعه کردم و میپذیرم
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-12 text-align-center">
+                                                        <button id="trtr" type="submit"  class="btn btn-success width-150">عضویت</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form  class="form-horizontal" id="login" name="signin" method="post" action="signin">
+
+                                                <div class="form-group">
+						                                        <div class="col-sm-1"></div>
+                                                    <label for="inputEmail3" class="col-sm-3 col-sm-offset-1 control-label labels">شناسه ورود<sup><i class="fa fa-asterisk"></i></sup></label>
+                                                    <div class="col-sm-6">
+                                                        <input name="email" class="form-control filling" placeholder="شماره موبایل یا ایمیل">
+                                                    </div>
+                                                </div>
+												</br>
+                                                <div class="form-group">
+					                                      <div class="col-sm-1"></div>
+                                                    <label for="inputEmail3" class="col-sm-3 col-sm-offset-1 control-label labels"> رمز عبور<sup><i class="fa fa-asterisk"></i></sup></label>
+                                                    <div class="col-sm-6">
+                                                        <input name="password" type="password" class="form-control filling" placeholder="رمز عبور">
+                                                    </div>
+                                                </div>
+												</br>
+                                                <div class="form-group">
+												<div class="col-sm-1"></div>
+                                                    <label for="inputEmail3" class="col-sm-3 col-sm-offset-1 control-label labels"> کد امنیتی<sup><i class="fa fa-asterisk"></i></sup></label>
+														<div class="col-sm-3">
+                                                        <input type="email" class="form-control filling" placeholder="کد امنیتی">
+                                                    </div>
+                                                    <div class="col-sm-1">
+                                                        <i class="fa fa-refresh fa-2x margin-top-5" ></i>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <img src="images/capt.png" class="max-height-30" >
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-7 text-align-left" >
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> من را به خاطر بسپار
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 margin-top-5" >
+                                                        <label id="fgf">
+                                                            بازیابی رمز عبور
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-12 text-align-center">
+                                                        <button type="submit"  class="btn btn-success width-150">ورود</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-6 col-sm-3 col-sm-offset-0 input-group margin-top-10" >
+                    <input id="search-query" type="text" class="form-control" name="email"  placeholder="جستجوی فیلم، سریال، بازیگر، کارگردان و ...">
+                    <span class="input-group-addon"><i style="cursor:pointer" class="glyphicon glyphicon-search" id="search-btn"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <nav class="navbar navbar-default navbar-static-top margin-bottom-zero"  role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">آخرین ها
+                                    <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">فیلم ها
+                                    <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">سریال</a></li>
+                            <li><a href="#">انیمیشن</a></li>
+                            <li><a href="#">مستند</a></li>
+                            <li><a href="#">مجموعه ها</a></li>
+                            <li><a href="#">انیمه</a></li>
+                            <li><a href="#">دوبله</a></li>
+                            <li><a href="#"> زیک زاک</a></li>
+                            <li><a href="#"> باکس آفیس</a></li>
+                            <li><a href="#"> آنونس</a></li>
+                            <li><a href="#">برترین ها</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+	<div id="fdfg">
+		<div id="titlot">دانلود فیلم، سریال، انیمیشن، مستند و دوبله با 13611 عنوان</div>
+		<a href="#" class="divwh"><i id="searchplus" class="fa fa-search-plus"></i></a>
+		<a href="#" class="divwh"><i id="searchpp" class="fa fa-search"></i></a>
+		<input id="searchii" type="text" class="form-control" name="email"  placeholder="جستجوی فیلم، سریال، بازیگر، کارگردان و ...">
+		<button id="tosearch">جستجو</button>
+	</div>
+    <div class="container-fluid header-carousel">
+        <div class="row margin-bottom-10">
+            <div class="col-md-3 col-md-offset-1 margin-bottom-10" >
+                <a href="#"><span class="category-btn" >همه</span><a>
+                <a href="#"><span class="category-btn" >سینمایی</span></a>
+                <a href="#"><span class="category-btn" >انیمیشن</span></a>
+
+            </div>
+            <div class="col-md-2 col-md-offset-5">
+                <span class="newest-subject">جدیدترین عناوین</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="owl-carousel" id="target-movie-div">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tyti">
+    <div class="container">
+        <div class="row">
+            <div id="fgyi" class="col-md-5 col-md-offset-1">
+                <div id="sizefoo">اسطوره کنگ فو و رویای صعود به قله!</div>
+                <br>
+                <div id="sizefooo">از بهترین نبردهای بروسلی</div>
+                <br>
+                <div><button id="follower">طرفدارای بروسلی دانلود کنن!</button></div>
+            </div>
+            <div class="col-md-4 col-md-offset-1">
+                <img id="cropimg" src="capture.png">
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <div id="backwh" class="container-fluid header-carousel">
+        <div class="row margin-bottom-10">
+            <div class="col-md-3 col-md-offset-1 margin-bottom-10" >
+                <span id="spanbl" class="newest-subject">داغ ترین ها</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="owl-carousel" id="target-hot-movie-div">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <br>
+        <br>
+    </div>
+
+    <div class="navbar navbar-default navbar-bottom nav-links">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-md-offset-2" >
+                    <ul class="nav navbar-nav max-width-100" >
+                        <li><a href="#"> درخواست فیلم</a></li>
+                        <li><a href="#"> اشتراک ویژه</a></li>
+                        <li><a href="#">  باکس آفیس</a></li>
+                        <li><a href="#">نرم افزارهای مورد نیاز </a></li>
+                        <li><a href="#">پرسش های متداول </a></li>
+                        <li><a href="#">درباره ما </a></li>
+                        <li><a href="#">تماس با ما </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row padding-top-20">
+                <div class="col-md-4 col-md-offset-1">
+                    <div class="context">
+                        محتوای این سایت مطابق با فرهنگ
+
+                        خانواده های ایرانی می باشد
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="margin-top-10">
+                        مجموعه دیتابیس فیلم امیرکبیر، با هدف ایجاد یک تجربه مشترک آموزشی و تفریحی برای دانشجویان دانشگاه صنعتی امیرکبیر ایجاد شده و هیچگونه استفاده تجاری ندارد. در صورتی که از این سایت و امکانات آن لذت می برید آن را به دوستان خود هم معرفی کنید.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 padding-top-20">
+                    <a href="#" class="fa fa-google-plus socials"></a>
+                    <a href="#" class="fa fa-instagram socials"></a>
+                    <a href="#" class="fa fa-telegram socials"></a>
+                    <a href="#" class="fa fa-twitter socials"></a>
+                </div>
+            </div>
+            <div class="row copyright" >
+                <hr class="hr-style">
+                <div class="text-center-class">
+                    تمامی حقوق این وب سایت متعلق به دیتابیس فیلم امیرکبیر می باشد
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="js/main.js">
+</script>
+</html>
