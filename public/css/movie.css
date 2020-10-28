@@ -1,0 +1,362 @@
+html, body{
+    padding: 0;
+}
+@font-face {
+    font-family: 'IRANSans-web';
+    src: url('../fonts/IRANSANSExpanded.eot?#') format('eot'),/* IE6–8 */
+    url('../fonts/IRANSANSExpanded.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
+    url('../fonts/IRANSANSExpanded.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'IRANSans-web';
+    src: url('../fonts/IRANSans-Bold.eot?#') format('eot'),  /* IE6–8 */
+    url('../fonts/IRANSans-Bold.woff2') format('woff2'),  /* Chrome36+, Opera24+*/
+    url('../fonts/IRANSans-Bold.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    font-weight: bold;
+}
+body {
+    background: #fff;
+    direction: rtl;
+}
+#edd {
+    margin-top: 20px;margin-right: 50px;font-size: 15px
+}
+#edd a{
+	font-size:12px;
+	color:#909090;
+	text-decoration:none;
+	cursor:pointer;
+}
+#gantimg {
+	width:20%;
+	margin-right:5%
+}
+#poerh {
+    margin-top: 20px;margin-bottom: 40px;
+}
+#file_size_target {
+	background-color:#141414;
+	color:#fff
+}
+#lang{
+	background-color:#1E1E1E
+}
+#tyty {
+    margin-bottom: 10px;color:#3A6EE8
+}
+#rtrt {
+    width:100%;	color:#3A6EE8;border-top:2px solid
+}
+#tuo {
+    text-align: center;
+}
+.width-1500{
+	width:150px;
+}
+#yuy{
+    margin-top:20px;
+	line-height:30px;
+	color:#909090;
+}
+#fgfg{
+    padding-top: 20px;
+	color:#909090;
+}
+.search_img {
+	width:40px;
+}
+#fyfyu {
+    padding-top: 20px;margin-bottom: 0
+}
+#huhu {
+    text-align: center;margin-top: 80px;margin-bottom:50px;font-size: 70px;
+}
+#movie-nav-target {
+    background-color: #fafafa;height: 60px
+}
+#movie-tags-target {
+    padding-right: 80px;background-color: rgb(224, 32, 47)
+}
+
+#movie-poster-target {
+    text-align: center;margin-top: -40px
+}
+#movie-rating-target {
+    margin: 10px;
+}
+#movie-info-target {
+    font-size: 14px;margin: 10px;
+}
+#movie-summary-target {
+    margin: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 190px;
+
+}
+#fsum {
+	direction:ltr
+}
+#movie-creator-target {
+    margin: 10px;
+}
+#ghgu {
+    padding-top: 20px
+}
+#jiu {
+    margin-top: 20px;font-size: 15px;
+}
+#jiu a{
+	color:#fff;
+	cursor:pointer
+}
+#jiu a:hover{
+	text-decoration:none
+}
+#tgy {
+    width : 100%;padding: 20px;background-color: rgb(224, 32, 47)
+}
+#jii {
+    margin-top: 20px;margin-bottom: 20px
+}
+#ghuu {
+    text-align:right
+}
+#gyy {
+    max-height: 35px;
+}
+#guio {
+    margin-bottom: 0
+}
+.yuuu{
+    display: inline
+}
+#padding-right-65-px{
+    color:whitesmoke;
+    padding-right: 65px;
+
+}
+.margin-left-right-40{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.back-ground-image{
+    background: url("../background.jpg") ;
+    background-repeat: no-repeat ;
+    background-clip:content-box;
+    background-size: cover;
+}
+#linein ul li a{
+	text-decoration:none;
+	color:#909090;
+}
+#linein ul li a:hover{
+	color:#000;
+	cursor:pointer;
+}
+#gyg {
+	margin-right:100px
+}
+#fdr {
+	font-size: 16px;
+	color:orange
+
+}
+.size {
+	border-bottom: 2px solid #141414;
+	padding-bottom: 3px;
+	border-top: 2px solid #141414;
+	padding-top: 4px;
+	width:8%;
+	background-color:#141414;
+	border-radius: 0 3px 3px 0;
+	color:#fff;
+	text-align: center;
+}
+.lang {
+	border-bottom: 2px solid #141414;
+	padding-bottom: 3px;
+	border-top: 2px solid #141414;
+	padding-top: 4px;
+	width:4%;
+	background-color:#1E1E1E;
+	text-align: center;
+	color:#fff;
+}
+.buy {
+	border-bottom: 2px solid #141414;
+	padding-bottom: 3px;
+	border-top: 2px solid #141414;
+	padding-top: 4px;
+	width:4%;
+	background-color:#2B2B2B;
+	text-align: center;
+}
+.imgflag {
+	height:30px;
+}
+.flagg {
+	border-bottom: 2px solid #00CC99;
+	padding-bottom: 3px;
+	border-top: 2px solid #00CC99;
+	padding-top: 4px;
+	width:4%;
+	text-align: center;
+}
+.ganoolg {
+	border-bottom: 2px solid #00CC99;
+	padding-bottom: 3px;
+	border-top: 2px solid #00CC99;
+	padding-top: 4px;
+	width:24%;
+	text-align:left;
+}
+.mainlangg {
+	border-bottom: 2px solid #00CC99;
+	padding-bottom: 3px;
+	border-top: 2px solid #00CC99;
+	padding-top: 4px;
+	width:6%;
+	text-align: center;
+}
+.speedg {
+	border-bottom: 2px solid #00CC99;
+	padding-bottom: 3px;
+	border-top: 2px solid #00CC99;
+	padding-top: 4px;
+	width:4%;
+	color:#00CC99;
+	text-align: center;
+}
+.icolorg {
+	border-bottom: 2px solid #00CC99;
+	padding-bottom: 3px;
+	border-top: 2px solid #00CC99;
+	padding-top: 4px;
+	width:13%;
+	background-color:#00CC99;
+	color:#fff;
+	font-weight: bold;
+	font-size:14px;
+	border-radius: 3px 0 0 3px;
+	text-align: center;
+}
+table{
+	height:10px;
+}
+#subnoo {
+	margin-top:20px
+}
+#helpuu {
+	margin-top:10px
+}
+
+
+
+
+
+/*for comment page*/
+#cstaticw {
+	border-right: 1px solid;
+	border-left: 1px solid;
+	border-bottom: 1px solid;
+	border-color: #C0C0C0;
+	margin-top: -40px;
+	height: 250px;
+}
+#shyh {
+	padding-top:50px;
+	margin-right:70px;
+	color:#3a6ee8
+}
+#ghgoo {
+	float:right;
+	margin-right:15px;
+}
+.ctoberight {
+	float:right
+}
+.opop {
+	float:right;
+	margin-right:15px;
+}
+.spsix {
+	font-size:9px;
+}
+.prrp {
+	width:100px;
+	margin-top:35px
+}
+#txtuy {
+	border:none;
+	border-top: 1px solid #C0C0C0;
+	border-right: 1px solid #C0C0C0;
+	border-left: 1px solid #C0C0C0;
+	border-radius:7px 7px 0px 0px ;
+	float:right;
+	margin-right: 40px;
+	margin-top:20px;
+	width: 600px;
+}
+#ytyty {
+	border:none;
+	border-bottom: 1px solid #C0C0C0;
+	border-right: 1px solid #C0C0C0;
+	border-left: 1px solid #C0C0C0; border-radius:0px 0px 7px 7px ; float:right; margin-right: 40px; width: 600px;
+}
+#entersu {
+	margin-top: 10px;
+	color:#fff;
+	background-color:#15c678;
+	border:0px;
+	border-radius:7px;
+	height:35px;
+	width:90px;
+	float:left;
+	margin-left:1%
+}
+.drdr {
+	border:2px solid;
+	border-radius: 10px;
+	border-color:#15c678;
+	margin-top:-40px;
+	height:250px
+}
+.ftfto {
+	padding-top:50px;
+	margin-right:70px;
+	color:#3a6ee8
+}
+.tobedate{
+	float:right;
+	color: #C0C0C0;
+}
+.clikef {
+	float: right;
+	margin-top: 5px
+}
+.ithumbb {
+	color: #2cb273;
+	float: right;
+}
+.cdislikef {
+	float: right;
+	margin-right: 10px;
+	margin-top: 5px
+}
+.ithumbd {
+	color: red;
+	float: right;
+}
+.tobeleft {
+	float: left;
+}
+.mmcomm {
+	border-radius:7px ;
+	margin-top:40px;
+	height: 150px;
+	width: 500px;
+	margin-right: 100px;
+	border: 2px solid #C0C0C0;
+}
